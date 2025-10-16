@@ -8,7 +8,6 @@ on:
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -28,4 +27,6 @@ jobs:
           context: . 
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }/hello-world-site:latest
+          tags: |
+            "${{ secrets.DOCKERHUB_USERNAME }}/hello-world-site:latest"
+            "${{ secrets.DOCKERHUB_USERNAME }}/hello-world-site:${{ github.sha }}"
