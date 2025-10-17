@@ -21,7 +21,7 @@ jobs:
           
       # Кэш pip для ускорения установки зависимостей    
       - name: Cache pip dependencies
-        uses: action/checkout@v4
+        uses: actions/checkout@v4
         with:
            path: ~/.cache/pip
            key: pip-${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}
