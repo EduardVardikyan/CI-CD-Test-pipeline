@@ -12,6 +12,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Cache pip dependencies
+        uses: action/checkout@v4
+        with:
+           path: ~/.cache/pip
+           key: pip-${{ runner.os }}-${{ hashFiles('**/requirements.txt') }}
+           restore-keys: |
+             pip-${{ runner.os }}-
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
